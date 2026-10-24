@@ -1,0 +1,23 @@
+{
+  "name": "optcg-search",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Scryfall-style search for the One Piece Card Game",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "scrape": "node scripts/scrape.ts",
+    "search": "node scripts/search.ts",
+    "test": "node --test \"src/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.0"
+  }
+}

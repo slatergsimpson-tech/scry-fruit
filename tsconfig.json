@@ -1,0 +1,17 @@
+{
+  // Node runs the .ts files directly by stripping the types, so tsc only
+  // checks them. That rules out syntax Node can't strip (enums, namespaces,
+  // constructor parameter properties) — erasableSyntaxOnly enforces it.
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true
+  },
+  "include": ["src", "scripts"]
+}
