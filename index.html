@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scry Fruit</title>
+    <meta name="description" content="Scryfall-style card search for the One Piece Card Game" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍎</text></svg>" />
+    <link rel="stylesheet" href="/src/web/style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="brand" href="./" data-nav>Scry&nbsp;Fruit</a>
+      <form class="search" role="search" id="search-form">
+        <input
+          id="q"
+          name="q"
+          type="search"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder='Search cards — try c:red is:rush cost<=3'
+          aria-label="Search cards"
+        />
+      </form>
+      <a class="toplink" href="?syntax" data-nav>Syntax</a>
+    </header>
+    <main id="app" aria-live="polite"></main>
+    <footer class="foot">
+      Unofficial fan project. Card text and images © Bandai / Eiichiro Oda.
+      <a href="https://github.com/slatergsimpson-tech/scry-fruit">Source</a>
+    </footer>
+    <script type="module" src="/src/web/main.ts"></script>
+  </body>
+</html>

@@ -17,11 +17,14 @@ Unofficial fan project. Card text and images belong to Bandai.
 
 ## Usage
 
-Needs Node 24+ (it runs the TypeScript directly; there is no build step).
+Needs Node 24+ (scripts and tests run the TypeScript directly; Vite bundles
+the website).
 
 ```bash
 npm install
-npm run scrape                  # refresh data/cards.json (cached in .cache/; --fresh to refetch)
+npm run dev                     # the website, at http://localhost:5173
+npm run build                   # static site in dist/, deployable anywhere
+npm run scrape                  # refresh public/cards.json (cached in .cache/; --fresh to refetch)
 npm test
 npm run search -- 'c:red is:rush cost<=3'
 npm run search -- --prints 'luffy is:parallel'   # every printing, not one per card
@@ -62,12 +65,16 @@ warning and ignored, like on Scryfall.
 ## Layout
 
 ```
-scripts/scrape.ts       official site -> data/cards.json
+scripts/scrape.ts       official site -> public/cards.json
 scripts/search.ts       terminal search
 src/card.ts             the Card type: the contract between the two halves
 src/query/lexer.ts      query string -> tokens
 src/query/parser.ts     tokens -> syntax tree (recursive descent)
 src/query/compile.ts    syntax tree -> (card) => boolean; every search key lives here
 src/query/index.ts      search(cards, query)
+src/web/main.ts         the website: loads cards, routes ?q= / ?card= / ?syntax
+src/web/render.ts       HTML for results, text cards and card pages
+src/web/syntax.ts       the syntax help page
+public/cards.json       the card data, served as-is
 docs/build-log.md       what was built, what broke, and why
 ```

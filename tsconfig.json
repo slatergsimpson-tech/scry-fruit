@@ -4,6 +4,8 @@
   // constructor parameter properties) — erasableSyntaxOnly enforces it.
   "compilerOptions": {
     "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": ["node", "vite/client"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "strict": true,
@@ -13,5 +15,5 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
   },
-  "include": ["src", "scripts"]
+  "include": ["src", "scripts", "vite.config.ts"]
 }

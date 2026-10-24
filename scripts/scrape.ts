@@ -1,4 +1,4 @@
-// Builds data/cards.json from the official English card list.
+// Builds public/cards.json from the official English card list.
 //
 // The card list page has a <select> of every product ("series"). Requesting
 // /cardlist/?series=<id> returns one HTML page holding every card in that
@@ -126,7 +126,7 @@ function parseCards(html: string, series: Series): Card[] {
 }
 
 await mkdir(CACHE, { recursive: true });
-await mkdir("data", { recursive: true });
+await mkdir("public", { recursive: true });
 
 const allSeries = parseSeries(await fetchPage(null));
 console.log(`Found ${allSeries.length} products`);
@@ -147,6 +147,6 @@ for (const [i, series] of allSeries.entries()) {
 }
 
 const cards = [...byId.values()].sort((a, b) => a.id.localeCompare(b.id));
-await writeFile("data/cards.json", JSON.stringify(cards, null, 1));
+await writeFile("public/cards.json", JSON.stringify(cards, null, 1));
 const unique = new Set(cards.map((c) => c.code)).size;
-console.log(`Wrote ${cards.length} printings (${unique} unique cards) to data/cards.json`);
+console.log(`Wrote ${cards.length} printings (${unique} unique cards) to public/cards.json`);

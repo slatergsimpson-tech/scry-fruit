@@ -15,7 +15,7 @@ if (!query) {
   process.exit(1);
 }
 
-const cards: Card[] = JSON.parse(await readFile("data/cards.json", "utf8"));
+const cards: Card[] = JSON.parse(await readFile("public/cards.json", "utf8"));
 const started = performance.now();
 const result = search(cards, query, { prints });
 const ms = (performance.now() - started).toFixed(1);
