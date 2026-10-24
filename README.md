@@ -8,6 +8,8 @@ c:purple t:character cost<=4 (is:blocker or o:"don!! -1") -trait:donquixote
 
 and get every card that matches.
 
+**Live at https://slatergsimpson-tech.github.io/scry-fruit/**
+
 The whole card pool is ~4,900 printings, small enough to search in memory in
 a few milliseconds, so there's no server or database: one JSON file and a
 query engine. Card data comes from the official English card list at
