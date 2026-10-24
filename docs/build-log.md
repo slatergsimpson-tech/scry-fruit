@@ -115,7 +115,27 @@ a search for it), and the syntax page all work on desktop and at phone width.
 ### Next
 
 - **Card images**: needs a decision on where to serve them from.
-- **Deploy** to GitHub Pages.
+
+## 2026-10-24 — Deployed to GitHub Pages
+
+Live at https://slatergsimpson-tech.github.io/scry-fruit/.
+
+A GitHub Actions workflow (`.github/workflows/deploy.yml`) runs the typecheck
+and tests, builds, and publishes `dist/` on every push to main, about a
+minute end to end. Before the first push I served the production build under
+`/scry-fruit/` locally, because sites that assume they live at a domain root
+break on Pages.
+
+### What broke
+
+- **Two deploy systems raced.** The first deploy succeeded, but the live
+  site was the raw, unbuilt `index.html`. The run list showed why: GitHub's
+  older "pages build and deployment" (branch mode, which publishes the repo
+  files as-is) ran on the same push and finished 6 s after our workflow,
+  overwriting it. That builder only runs when Settings → Pages → Source is
+  "Deploy from a branch". Switching Source to "GitHub Actions" fixed it, and
+  the next push ran only our workflow. Lesson: a green check means the
+  workflow succeeded, not that the right thing is live. Load the live site.
 
 ### What I'd say in an interview
 
