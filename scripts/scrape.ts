@@ -23,7 +23,7 @@ async function fetchPage(series: string | null): Promise<string> {
 
   const url = `${BASE}/cardlist/${series ? `?series=${series}` : ""}`;
   const res = await fetch(url, {
-    headers: { "User-Agent": "optcg-search card indexer (personal fan project)" },
+    headers: { "User-Agent": "scry-fruit card indexer (fan project; github.com/slatergsimpson-tech/scry-fruit)" },
   });
   if (!res.ok) throw new Error(`${url} -> HTTP ${res.status}`);
   const html = await res.text();

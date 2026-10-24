@@ -1,4 +1,4 @@
-# optcg-search
+# Scry Fruit
 
 Scryfall-style search for the One Piece Card Game: type a query like
 
