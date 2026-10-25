@@ -2,13 +2,15 @@
 //
 // The card list page has a <select> of every product ("series"). Requesting
 // /cardlist/?series=<id> returns one HTML page holding every card in that
-// product, so the whole card pool is ~65 requests. Pages are cached in
-// .cache/ so re-running while developing doesn't hit Bandai's server again;
-// pass --fresh to ignore the cache.
+// product, so the whole card pool is ~65 requests. Two more pages give the
+// ban list and Bandai's block-number overrides. Pages are cached in .cache/
+// so re-running while developing doesn't hit Bandai's server again; pass
+// --fresh to ignore the cache.
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import * as cheerio from "cheerio";
 import type { Card } from "../src/card.ts";
+import { legalBlock, parseBanList, parseBlockOverrides } from "./legality.ts";
 
 const BASE = "https://en.onepiece-cardgame.com";
 const CACHE = ".cache";
@@ -17,11 +19,12 @@ const fresh = process.argv.includes("--fresh");
 
 type Series = { id: string; name: string; set: string };
 
-async function fetchPage(series: string | null): Promise<string> {
-  const file = `${CACHE}/${series ?? "index"}.html`;
+// `name` is the cache file: .cache/<name>.html
+async function fetchPage(path: string, name: string): Promise<string> {
+  const file = `${CACHE}/${name}.html`;
   if (!fresh && existsSync(file)) return readFile(file, "utf8");
 
-  const url = `${BASE}/cardlist/${series ? `?series=${series}` : ""}`;
+  const url = BASE + path;
   const res = await fetch(url, {
     headers: { "User-Agent": "scry-fruit card indexer (fan project; github.com/slatergsimpson-tech/scry-fruit)" },
   });
@@ -116,6 +119,10 @@ function parseCards(html: string, series: Series): Card[] {
       effect: effect === "-" ? "" : effect,
       trigger: trigger || null,
       block: fieldText($, dl, "block"),
+      // Filled in below, once every printing of the card number is known.
+      legalBlock: "",
+      ban: null,
+      bannedWith: [],
       set: series.set,
       setName: series.name,
       notes: fieldText($, dl, "remarks"),
@@ -128,14 +135,14 @@ function parseCards(html: string, series: Series): Card[] {
 await mkdir(CACHE, { recursive: true });
 await mkdir("public", { recursive: true });
 
-const allSeries = parseSeries(await fetchPage(null));
+const allSeries = parseSeries(await fetchPage("/cardlist/", "index"));
 console.log(`Found ${allSeries.length} products`);
 
 // A printing can be listed under more than one product (reprints, decks
 // that bundle booster cards). Keep the first sighting of each printing id.
 const byId = new Map<string, Card>();
 for (const [i, series] of allSeries.entries()) {
-  const cards = parseCards(await fetchPage(series.id), series);
+  const cards = parseCards(await fetchPage(`/cardlist/?series=${series.id}`, series.id), series);
   let added = 0;
   for (const card of cards) {
     if (!byId.has(card.id)) {
@@ -147,6 +154,26 @@ for (const [i, series] of allSeries.entries()) {
 }
 
 const cards = [...byId.values()].sort((a, b) => a.id.localeCompare(b.id));
+
+// Legality is per card number, so group the printings first.
+const banList = parseBanList(await fetchPage("/news/restriction.html", "restriction"));
+const overrides = parseBlockOverrides(await fetchPage("/rules/blockicon-card/", "blockicon"));
+const byCode = Map.groupBy(cards, (c) => c.code);
+
+for (const code of [...banList.banned, ...banList.restricted, ...banList.pairs.flat(), ...overrides.keys()]) {
+  if (!byCode.has(code)) console.warn(`! ${code} is on a legality list but not in the card list`);
+}
+
+for (const [code, printings] of byCode) {
+  const block = legalBlock(code, printings, overrides);
+  const ban = banList.banned.includes(code) ? "banned" : banList.restricted.includes(code) ? "restricted" : null;
+  const bannedWith = banList.pairs.flatMap(([a, b]) => (a === code ? [b] : b === code ? [a] : []));
+  for (const p of printings) Object.assign(p, { legalBlock: block, ban, bannedWith });
+}
+
 await writeFile("public/cards.json", JSON.stringify(cards, null, 1));
-const unique = new Set(cards.map((c) => c.code)).size;
-console.log(`Wrote ${cards.length} printings (${unique} unique cards) to public/cards.json`);
+console.log(`Wrote ${cards.length} printings (${byCode.size} unique cards) to public/cards.json`);
+console.log(
+  `Legality: ${banList.banned.length} banned, ${banList.restricted.length} restricted, ` +
+    `${banList.pairs.length} banned pairs, ${overrides.size} block overrides`,
+);

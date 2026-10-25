@@ -53,9 +53,11 @@ and parentheses group. A word with no key searches card names.
 | `a` `attr` | attribute | `a:slash` |
 | `r` `rarity` | rarity; C < UC < R < SR < SEC | `r:sec`, `r>=sr`, `r:l` |
 | `s` `set` | product | `s:op05`, `s:op-5`, `s:st10`, `s:eb01` |
-| `b` `block` | rotation block | `b>=3` |
+| `b` `block` | rotation block of the card number (X beats any number) | `b:2`, `b>=4`, `b:x` |
+| `legal` `f` | legal in a format: `standard` or `extra` | `legal:standard`, `-f:std t:leader` |
+| `banned` `restricted` | on the official ban list | `banned:extra` |
 | `kw` `keyword` | a bracket keyword the card has | `kw:"when attacking"` |
-| `is` | shortcuts | `is:blocker` `is:rush` `is:banish` `is:doubleattack` `is:onplay` `is:onko` `is:whenattacking` `is:activatemain` `is:counterevent` `is:vanilla` `is:multicolor` `is:parallel` `is:reprint` |
+| `is` | shortcuts | `is:blocker` `is:rush` `is:banish` `is:doubleattack` `is:onplay` `is:onko` `is:whenattacking` `is:activatemain` `is:counterevent` `is:vanilla` `is:multicolor` `is:parallel` `is:reprint` `is:rotating` `is:banned` `is:bannedpair` |
 | `has` | presence | `has:trigger` `has:counter` |
 
 Operators: `:` `=` `!=` `<` `<=` `>` `>=`. Text matches are case-insensitive
@@ -64,12 +66,28 @@ substrings; `=` means the whole value; `/.../` is a regular expression.
 Mistakes don't empty the results: an unknown key or value is reported as a
 warning and ignored, like on Scryfall.
 
+## Formats and rotation
+
+Standard uses Bandai's block numbers. Seasons run April 1 – March 31; in
+2026–27 blocks 2 and up are legal, and each April 1 the oldest block drops out.
+Block X is always legal. Extra allows everything. The ban list applies to both.
+
+Legality is per card *number*: a reprint with a newer block, or a card on
+Bandai's [block update list](https://en.onepiece-cardgame.com/rules/blockicon-card/),
+makes every printing of it count. Standard is worked out from today's date in
+the browser, so the site rotates on April 1 without a redeploy.
+
+A GitHub Action (`.github/workflows/refresh.yml`) re-scrapes cards, the ban
+list and block updates every Monday, and redeploys if anything changed.
+
 ## Layout
 
 ```
 scripts/scrape.ts       official site -> public/cards.json
+scripts/legality.ts     parses the ban list and block updates; works out each card's rotation block
 scripts/search.ts       terminal search
 src/card.ts             the Card type: the contract between the two halves
+src/formats.ts          Standard/Extra legality and the season calendar
 src/query/lexer.ts      query string -> tokens
 src/query/parser.ts     tokens -> syntax tree (recursive descent)
 src/query/compile.ts    syntax tree -> (card) => boolean; every search key lives here

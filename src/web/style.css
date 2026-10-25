@@ -170,3 +170,17 @@ main { flex: 1; width: 100%; max-width: 1400px; margin: 0 auto; padding: 16px va
   .search { order: 3; flex-basis: 100%; }
   .toplink { margin-left: auto; }
 }
+
+/* ---- legality ---- */
+.legality { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 4px; }
+.legal { display: inline-flex; align-items: stretch; border-radius: 6px; overflow: hidden; font-size: 0.85rem; border: 1px solid var(--line); color: var(--ink); }
+.legal:hover { text-decoration: none; border-color: var(--accent); }
+.legal-format { padding: 3px 10px; text-transform: capitalize; background: var(--panel); }
+.legal-state { padding: 3px 10px; font-weight: 700; color: #fff; }
+.legal.legal .legal-state { background: var(--green); }
+.legal.not_legal .legal-state { background: var(--muted); }
+.legal.banned .legal-state { background: var(--red); }
+.legal.restricted .legal-state { background: var(--yellow); color: #1a1a1a; }
+.legal-note { margin: 8px 0 0; font-size: 0.9rem; }
+.badge { display: inline-block; padding: 0 0.4em; border-radius: 4px; font-size: 0.9em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: #fff; background: var(--red); }
+.badge.restricted { background: var(--yellow); color: #1a1a1a; }

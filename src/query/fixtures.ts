@@ -19,6 +19,9 @@ function card(partial: Partial<Card> & Pick<Card, "id" | "name">): Card {
     effect: "",
     trigger: null,
     block: "1",
+    legalBlock: partial.block ?? "1",
+    ban: null,
+    bannedWith: [],
     set: code.split("-")[0],
     setName: "",
     notes: "",
@@ -26,6 +29,13 @@ function card(partial: Partial<Card> & Pick<Card, "id" | "name">): Card {
     ...partial,
   };
 }
+
+// Legality in the fixtures (judged in October 2026, when Standard is blocks 2+):
+//   OP05-119 Luffy   block X   always in Standard
+//   OP01-024 Luffy   block 3   legal; can't share a deck with Jozu (banned pair)
+//   OP02-008 Jozu    block 2   legal now, rotates out April 2027
+//   OP03-040 Kuro    block 3   banned
+//   everything else  block 1   Extra only
 
 export const CARDS: Card[] = [
   card({
@@ -61,7 +71,7 @@ export const CARDS: Card[] = [
     attributes: ["special"],
   }),
   card({
-    id: "OP01-024",
+    id: "OP01-024", legalBlock: "3", bannedWith: ["OP02-008"],
     name: "Monkey.D.Luffy",
     rarity: "SR",
     cost: 5,
@@ -70,7 +80,7 @@ export const CARDS: Card[] = [
     traits: ["Supernovas", "Straw Hat Crew"],
     effect: "[Rush] (This card can attack on the turn in which it is played.)\n[DON!! x2] [When Attacking] Your opponent cannot activate [Blocker].",
   }),
-  card({ id: "OP01-024_p1", name: "Monkey.D.Luffy", rarity: "SR", cost: 5, power: 6000, counter: null, traits: ["Supernovas", "Straw Hat Crew"], effect: "[Rush] (This card can attack on the turn in which it is played.)" }),
+  card({ id: "OP01-024_p1", legalBlock: "3", bannedWith: ["OP02-008"], name: "Monkey.D.Luffy", rarity: "SR", cost: 5, power: 6000, counter: null, traits: ["Supernovas", "Straw Hat Crew"], effect: "[Rush] (This card can attack on the turn in which it is played.)" }),
   card({
     id: "OP01-029",
     name: "Radical Beam!!",
@@ -84,7 +94,7 @@ export const CARDS: Card[] = [
     trigger: "Up to 1 of your Leader or Character cards gains +1000 power during this turn.",
   }),
   card({
-    id: "OP02-008",
+    id: "OP02-008", legalBlock: "2", bannedWith: ["OP01-024"],
     name: "Jozu",
     rarity: "UC",
     colors: ["red", "green"],
@@ -94,7 +104,7 @@ export const CARDS: Card[] = [
     effect: "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
   }),
   card({
-    id: "OP05-119",
+    id: "OP05-119", legalBlock: "X",
     name: "Monkey.D.Luffy",
     rarity: "SEC",
     colors: ["purple"],
@@ -115,7 +125,7 @@ export const CARDS: Card[] = [
     effect: "",
   }),
   card({
-    id: "OP03-040",
+    id: "OP03-040", legalBlock: "3", ban: "banned",
     name: "Kuro",
     rarity: "SR",
     colors: ["blue"],

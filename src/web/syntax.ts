@@ -18,12 +18,18 @@ const ENTRIES: Entry[] = [
   { keys: "a attr", what: "Attribute", examples: ["a:slash", "a:wisdom"] },
   { keys: "r rarity", what: "Rarity; ordered C < UC < R < SR < SEC", examples: ["r:sec", "r>=sr", "r:l"] },
   { keys: "s set", what: "Product; loose spellings work", examples: ["s:op05", "s:op-5", "s:st10", "s:eb01"] },
-  { keys: "b block", what: "Rotation block", examples: ["b>=4"] },
+  {
+    keys: "b block",
+    what: "Rotation block of the card number — after reprints and Bandai's block updates, so it can differ from the icon on an old printing. X counts as newer than any number.",
+    examples: ["b:2", "b>=4", "b:x"],
+  },
+  { keys: "legal f format", what: "Legal in a format: standard or extra", examples: ["legal:standard", "f:extra", "-legal:standard t:leader"] },
+  { keys: "banned restricted", what: "On the official ban list (it applies to both formats)", examples: ["banned:extra", "restricted:standard"] },
   { keys: "kw keyword", what: "A bracket keyword the card has itself (not one it gives away)", examples: ['kw:"when attacking"', 'kw:"on k.o."'] },
   {
     keys: "is",
     what: "Shortcuts",
-    examples: ["is:blocker", "is:rush", "is:banish", "is:doubleattack", "is:onplay", "is:onko", "is:activatemain", "is:counterevent", "is:vanilla", "is:multicolor", "is:parallel", "is:reprint"],
+    examples: ["is:blocker", "is:rush", "is:banish", "is:doubleattack", "is:onplay", "is:onko", "is:activatemain", "is:counterevent", "is:vanilla", "is:multicolor", "is:parallel", "is:reprint", "is:rotating", "is:banned", "is:bannedpair"],
   },
   { keys: "has", what: "Has a thing at all", examples: ["has:trigger", "has:counter"] },
 ];
@@ -57,5 +63,12 @@ export function syntaxPage(): string {
       <h2>Search keys</h2>
       <table class="syntax">${rows}</table>
       <p class="muted">A key or value Scry Fruit doesn't know shows a warning and is ignored, rather than emptying your results.</p>
+      <h2>Formats and rotation</h2>
+      <p><strong>Standard</strong> uses the block icon. A season runs April 1 to March 31: in 2026–27 blocks 2 and up are
+        legal, and every April 1 the oldest block drops out. Block X cards are always legal.
+        <strong>Extra</strong> allows every block. The ban list applies to both.</p>
+      <p>Legality belongs to the card number, not the printing: when Bandai reprints a card with a newer block, or
+        moves it to a block on <a href="https://en.onepiece-cardgame.com/rules/blockicon-card/" rel="noopener">their update list</a>,
+        every printing of it counts. <code>is:rotating</code> finds what leaves Standard at the next April 1.</p>
     </article>`;
 }

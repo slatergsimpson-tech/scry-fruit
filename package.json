@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "scrape": "node scripts/scrape.ts",
     "search": "node scripts/search.ts",
-    "test": "node --test \"src/**/*.test.ts\"",
+    "test": "node --test \"src/**/*.test.ts\" \"scripts/**/*.test.ts\"",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

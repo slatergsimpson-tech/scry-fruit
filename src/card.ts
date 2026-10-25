@@ -20,7 +20,12 @@ export type Card = {
   traits: string[]; // "Straw Hat Crew", "Supernovas"...
   effect: string; // "" for vanilla cards
   trigger: string | null; // text after [Trigger], null if none
-  block: string; // rotation block icon: "1", "2"... or "X"
+  block: string; // block icon printed on this printing: "1", "2"... or "X"
+  // The block this card NUMBER counts as for rotation, shared by all its
+  // printings — see legalBlock() in scripts/legality.ts for how it's derived.
+  legalBlock: string;
+  ban: "banned" | "restricted" | null; // official list; applies to every format
+  bannedWith: string[]; // codes this card can't share a deck with (banned pairs)
   set: string; // product the printing shipped in, normalized: "OP01", "ST10", "EB04"
   setName: string;
   notes: string;

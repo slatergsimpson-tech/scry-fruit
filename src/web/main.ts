@@ -36,6 +36,8 @@ const EXAMPLES = [
   ["c:purple o:\"don!! -\" pow>=7k", "Purple DON!! minus beaters"],
   ["has:trigger t:character c:yellow cost<=2", "Cheap yellow triggers"],
   ["is:vanilla pow>=6k", "Vanilla bodies"],
+  ["is:rotating t:leader", "Leaders leaving Standard next April"],
+  ["banned:extra or is:bannedpair", "The ban list"],
 ];
 
 function homeView(): string {
@@ -98,7 +100,8 @@ function render() {
       document.title = "Not found · Scry Fruit";
       return;
     }
-    app.innerHTML = cardPage(card, byCode.get(card.code) ?? [card]);
+    const nameOf = (code: string) => byCode.get(code)?.[0].name ?? code;
+    app.innerHTML = cardPage(card, byCode.get(card.code) ?? [card], new Date(), nameOf);
     document.title = `${card.name} (${card.id}) · Scry Fruit`;
     window.scrollTo(0, 0);
   } else if (params.has("syntax")) {

@@ -3,8 +3,8 @@
   // checks them. That rules out syntax Node can't strip (enums, namespaces,
   // constructor parameter properties) — erasableSyntaxOnly enforces it.
   "compilerOptions": {
-    "target": "ES2023",
-    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "target": "ES2024",
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
     "types": ["node", "vite/client"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",

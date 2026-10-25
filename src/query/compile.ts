@@ -4,12 +4,15 @@
 // they produce a warning and match everything, so one typo in a long query
 // narrows nothing instead of wiping out the results (Scryfall does the same).
 import type { Card } from "../card.ts";
+import { FORMATS, isRotating, legality, type Format } from "../formats.ts";
 import type { Op } from "./lexer.ts";
 import type { Node } from "./parser.ts";
 
 export type Predicate = (card: Card) => boolean;
 type Term = Extract<Node, { type: "term" }>;
-type Matcher = (term: Term, warn: (msg: string) => void) => Predicate;
+// `now` is the date legality is judged at: today in the app, pinned in tests.
+type Matcher = (term: Term, warn: (msg: string) => void, now: Date) => Predicate;
+type Flag = (card: Card, now: Date) => boolean;
 
 const ALL: Predicate = () => true;
 
@@ -145,12 +148,12 @@ const category: Matcher = (t, warn) => {
 
 const traits = text((c) => c.traits);
 
-const typeLine: Matcher = (t, warn) => {
+const typeLine: Matcher = (t, warn, now) => {
   const v = t.value.toLowerCase();
   if (!t.regex && CATEGORIES.some((k) => k.startsWith(v)) && v.length >= 3) {
-    return category(t, warn);
+    return category(t, warn, now);
   }
-  return traits(t, warn);
+  return traits(t, warn, now);
 };
 
 // Rarity is an ordered scale for C..SEC, so r>=sr works. Leaders, promos,
@@ -196,8 +199,40 @@ const keyword: Matcher = (t) => {
   return t.op === "!=" ? (c) => !pred(c) : pred;
 };
 
+// b: is the ROTATION block of the card number (see Card.legalBlock), not
+// the icon on one printing, because that's what decides legality. "X" is
+// newer than any number: b>=3 includes it, b:x finds only X cards.
+const block: Matcher = (t, warn) => {
+  const rank = (b: string) => (b === "X" ? Infinity : parseInt(b, 10));
+  const v = t.value.toLowerCase();
+  const want = v === "x" ? Infinity : parseInt(v, 10);
+  if (Number.isNaN(want) || !/^(x|\d+)$/.test(v)) {
+    warn(`"${t.key}${t.op}${t.value}": expected a block number or x`);
+    return ALL;
+  }
+  return (c) => {
+    const r = rank(c.legalBlock);
+    return !Number.isNaN(r) && compare(r, t.op!, want);
+  };
+};
+
+// legal:standard, banned:extra, restricted:standard. Like Scryfall, a
+// restricted card is not "legal" — it has its own key. Prefixes work: legal:std.
+function formatMatcher(want: "legal" | "banned" | "restricted"): Matcher {
+  return (t, warn, now) => {
+    const v = t.value.toLowerCase();
+    const format = FORMATS.find((f) => f.startsWith(v) || (v === "std" && f === "standard"));
+    if (!format || !v) {
+      warn(`Unknown format "${t.value}" (try ${FORMATS.join(", ")})`);
+      return ALL;
+    }
+    const pred: Predicate = (c) => legality(c, format as Format, now) === want;
+    return t.op === "!=" ? (c) => !pred(c) : pred;
+  };
+}
+
 // is:<thing>. Keyword shortcuts plus a few card properties.
-const IS: Record<string, Predicate> = {
+const IS: Record<string, Flag> = {
   vanilla: (c) => c.effect === "" && c.category === "character",
   multicolor: (c) => c.colors.length > 1,
   multi: (c) => c.colors.length > 1,
@@ -214,24 +249,28 @@ const IS: Record<string, Predicate> = {
   whenattacking: (c) => hasKeyword(c, "when attacking"),
   activatemain: (c) => hasKeyword(c, "activate: main"),
   counterevent: (c) => c.category === "event" && hasKeyword(c, "counter"),
+  banned: (c) => c.ban === "banned",
+  restricted: (c) => c.ban === "restricted",
+  bannedpair: (c) => c.bannedWith.length > 0,
+  rotating: (c, now) => isRotating(c, now),
 };
 
-const HAS: Record<string, Predicate> = {
+const HAS: Record<string, Flag> = {
   trigger: (c) => c.trigger !== null,
   counter: (c) => (c.counter ?? 0) > 0,
   effect: (c) => c.effect !== "",
   power: (c) => c.power !== null,
 };
 
-function flagMatcher(table: Record<string, Predicate>, key: string): Matcher {
-  return (t, warn) => {
+function flagMatcher(table: Record<string, Flag>, key: string): Matcher {
+  return (t, warn, now) => {
     const v = t.value.toLowerCase().replace(/[\s_-]/g, "");
-    const pred = table[v];
-    if (!pred) {
+    const flag = table[v];
+    if (!flag) {
       warn(`Unknown ${key}:${t.value} (try ${Object.keys(table).join(", ")})`);
       return ALL;
     }
-    return t.op === "!=" ? (c) => !pred(c) : pred;
+    return t.op === "!=" ? (c) => !flag(c, now) : (c) => flag(c, now);
   };
 }
 
@@ -269,8 +308,13 @@ export const FIELDS: Record<string, Matcher> = {
   s: set,
   set,
   e: set,
-  b: numeric((c) => num(c.block)),
-  block: numeric((c) => num(c.block)),
+  b: block,
+  block,
+  legal: formatMatcher("legal"),
+  f: formatMatcher("legal"),
+  format: formatMatcher("legal"),
+  banned: formatMatcher("banned"),
+  restricted: formatMatcher("restricted"),
   kw: keyword,
   keyword,
   is: flagMatcher(IS, "is"),
@@ -279,24 +323,19 @@ export const FIELDS: Record<string, Matcher> = {
   number: text((c) => [c.code]),
 };
 
-function num(s: string): number | null {
-  const n = parseInt(s, 10);
-  return Number.isNaN(n) ? null : n;
-}
-
-export function compile(node: Node | null, warn: (msg: string) => void): Predicate {
+export function compile(node: Node | null, warn: (msg: string) => void, now: Date): Predicate {
   if (!node) return ALL;
   switch (node.type) {
     case "and": {
-      const preds = node.children.map((n) => compile(n, warn));
+      const preds = node.children.map((n) => compile(n, warn, now));
       return (c) => preds.every((p) => p(c));
     }
     case "or": {
-      const preds = node.children.map((n) => compile(n, warn));
+      const preds = node.children.map((n) => compile(n, warn, now));
       return (c) => preds.some((p) => p(c));
     }
     case "not": {
-      const p = compile(node.child, warn);
+      const p = compile(node.child, warn, now);
       return (c) => !p(c);
     }
     case "term": {
@@ -306,14 +345,14 @@ export function compile(node: Node | null, warn: (msg: string) => void): Predica
           const v = node.value.toUpperCase();
           return (c) => c.id.startsWith(v);
         }
-        return name({ ...node, op: ":" }, warn);
+        return name({ ...node, op: ":" }, warn, now);
       }
       const matcher = FIELDS[node.key];
       if (!matcher) {
         warn(`Unknown search key "${node.key}" — ignored`);
         return ALL;
       }
-      return matcher(node, warn);
+      return matcher(node, warn, now);
     }
   }
 }

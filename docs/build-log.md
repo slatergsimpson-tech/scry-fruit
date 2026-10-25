@@ -145,3 +145,65 @@ cross-origin: the publisher's image server sends a resource policy that
 browsers enforce but command-line tools ignore, so it only appeared in a
 real browser. I made images an optional layer, so the site still works fully
 without them."
+
+## 2026-10-24 — Rotation, legality and weekly refresh
+
+**Goal:** search by format (`legal:standard`, `banned:extra`, `is:rotating`),
+show legality on every card, and keep the data current without anyone
+running the scraper.
+
+### What the official rules say (and where)
+
+The comprehensive rules only say the block icon "does not affect gameplay";
+legality lives in three separate pages on Bandai's site:
+
+- *Introduction of the Block Number System*: seasons run April–March.
+  2026–27 Standard is blocks ②–⑤ and 2027–28 is ③–⑥. Block X is always legal.
+  Extra allows every block. Legality is per card **number**: a reprint with a
+  newer block makes every older printing legal too.
+- *Block Number updates*: 37 cards are "generally permitted" (treated as X)
+  and 15 are "treated as ④" no matter which printing.
+- *Banned/Restricted list*: 6 banned, 0 restricted (the category exists),
+  3 banned pairs (A and B can't share a deck). It applies to both formats.
+
+Blog posts disagreed with each other (three blocks or four?). The official
+pages settled it, which is why the scraper reads them directly.
+
+### Decisions
+
+- **Each card number gets a `legalBlock`** at scrape time: the override list
+  if the card is on it, else the newest block across its printings, and never
+  lower than its booster pack implies.
+- **Standard is computed in the browser from today's date**, not baked in at
+  scrape time. The site rotates on April 1 by itself, and the tests pin the
+  date so they don't start failing next April.
+- **`b:` searches the rotation block**, not the icon on one printing, because
+  that's what decides legality. The card page shows both when they differ.
+- **`legal:` excludes restricted cards**, like Scryfall, and a rotated-out
+  banned card counts as "not legal" in Standard, not "banned".
+- **The parsers fail loudly.** If the ban list or block update page parses to
+  nothing, the scrape throws, so a layout change on Bandai's side fails the
+  weekly job instead of publishing a site where everything looks legal.
+- **Weekly refresh calls the deploy workflow directly.** A commit pushed with
+  a workflow's own token doesn't trigger other workflows (by design: it stops
+  them setting each other off in a loop), so `deploy.yml` became reusable
+  (`workflow_call`) and takes the commit to build as an input.
+
+### What broke
+
+- **Bandai's card list says OP-05 is block 1** for 91 cards, against its own
+  rule that packs 5–8 are block 2. Limitless lists them as block 2 and
+  Standard-legal. If we'd trusted the printed number, 91 legal cards would
+  have shown as rotated out. The rotation block now never drops below the
+  pack's block.
+- I miscounted the block ④ list (16, from two overlapping printouts). The
+  parser's 15 was right; I checked the page it saw before "fixing" anything.
+
+### What I'd say in an interview
+
+"Format legality looked like a lookup and turned out to be a small rules
+engine. Legality belongs to the card number, not the printing; the publisher
+overrides some blocks; their own data has an error in one set; and the
+format changes every April. I split it into data that's scraped weekly by a
+scheduled job, and a pure function of the card and the date that runs in the
+browser. Pinning the date in tests is what keeps that function honest."

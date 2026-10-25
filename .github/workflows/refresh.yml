@@ -1,0 +1,58 @@
+# Re-scrapes the official site every week — cards, the ban list and Bandai's
+# block-number updates — and redeploys if anything changed. Rotation itself
+# needs no job: the site works out Standard from today's date.
+name: Refresh card data
+
+on:
+  schedule:
+    - cron: "23 9 * * 1" # Mondays 09:23 UTC; off the hour, when GitHub is busiest
+  workflow_dispatch:
+  # Also runs when this file changes, so an edit to it gets tested right away.
+  push:
+    branches: [main]
+    paths: [.github/workflows/refresh.yml]
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to commit the new data
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+      sha: ${{ steps.commit.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # ~65 requests, one a second. The parsers throw if a page's layout has
+      # changed, which fails this job instead of publishing bad data.
+      - run: npm run scrape -- --fresh
+      - run: npm test
+      - id: commit
+        run: |
+          if git diff --quiet -- public/cards.json; then
+            echo "No changes to the card data."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/cards.json
+            git commit -m "Refresh card data from the official site"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: scrape
+    if: needs.scrape.outputs.changed == 'true'
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ref: ${{ needs.scrape.outputs.sha }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write

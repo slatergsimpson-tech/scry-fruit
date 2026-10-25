@@ -6,6 +6,15 @@ on:
   push:
     branches: [main]
   workflow_dispatch: # adds a "Run workflow" button on the Actions tab
+  # Lets refresh.yml run this whole file as a step. It has to: a commit
+  # pushed with a workflow's own token deliberately doesn't trigger other
+  # workflows (that's what stops them setting each other off forever).
+  workflow_call:
+    inputs:
+      ref:
+        description: Commit or branch to build. The caller's commit is too old after a refresh commit.
+        type: string
+        default: ""
 
 # The deploy job needs to write to Pages and prove who it is (id-token);
 # nothing else gets write access.
@@ -14,17 +23,13 @@ permissions:
   pages: write
   id-token: write
 
-# If two pushes land close together, finish the deploy in progress and
-# then run the newest one, rather than cancelling halfway through.
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }} # empty on a push: the pushed commit
       - uses: actions/setup-node@v4
         with:
           node-version: 24
@@ -41,6 +46,12 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    # If two deploys land close together, finish the one in progress and then
+    # run the newest, rather than cancelling halfway through. (Set on the job,
+    # not the workflow, so it also holds when refresh.yml calls this file.)
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
