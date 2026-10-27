@@ -4,11 +4,13 @@
 import type { Card } from "../card.ts";
 import { FORMATS, isRotating, legality, nextRotation, type Legality } from "../formats.ts";
 
-// Where card scans are served from: `${IMAGE_BASE}${card.id}.webp`. null means
-// no image host yet, so cards are drawn from their text. Bandai's own image
-// URLs can't be used: their server sends Cross-Origin-Resource-Policy:
-// same-site, so browsers refuse to show them on any other site.
-export const IMAGE_BASE: string | null = null;
+// Where card scans are served from: `${IMAGE_BASE}${card.id}.webp`, set to
+// null to draw every card from its text. Bandai's own image URLs can't be
+// used: their server sends Cross-Origin-Resource-Policy: same-site, so
+// browsers refuse to show them on any other site. So scripts/images.ts keeps
+// shrunk copies on the "images" branch, and the deploy puts them in img/.
+// An image that isn't there yet falls back to the text card.
+export const IMAGE_BASE: string | null = `${import.meta.env.BASE_URL}img/`;
 
 export function esc(s: string): string {
   return s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -72,7 +74,7 @@ export function textCard(c: Card): string {
 export function cardFace(c: Card, size: "grid" | "large"): string {
   if (!IMAGE_BASE) return textCard(c);
   return `
-    <div class="face ${size}">
+    <div class="face face-${size}">
       <img src="${esc(IMAGE_BASE + c.id)}.webp" alt="${esc(c.name)}" loading="lazy" decoding="async">
       <template>${textCard(c)}</template>
     </div>`;

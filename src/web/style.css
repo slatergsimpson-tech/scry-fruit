@@ -96,7 +96,7 @@ main { flex: 1; width: 100%; max-width: 1400px; margin: 0 auto; padding: 16px va
 
 /* ---- card images ---- */
 .face img { display: block; width: 100%; height: auto; aspect-ratio: 600 / 838; border-radius: var(--radius); background: var(--line); box-shadow: var(--shadow); }
-.face.large img { border-radius: 14px; }
+.face-large img { border-radius: 14px; }
 
 /* ---- text cards (fallback and text view) ---- */
 .tcard {

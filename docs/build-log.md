@@ -207,3 +207,51 @@ overrides some blocks; their own data has an error in one set; and the
 format changes every April. I split it into data that's scraped weekly by a
 scheduled job, and a pure function of the card and the date that runs in the
 browser. Pinning the date in tests is what keeps that function honest."
+
+## 2026-10-27 — Card images
+
+**Goal:** show real card images, kept current by the weekly refresh.
+
+### Decisions
+
+- **Self-hosted, on an orphan `images` branch.** Bandai's server blocks
+  hotlinking, so the options were self-hosting or a Cloudflare proxy that
+  strips Bandai's header on every view. The branch needs no new accounts or
+  secrets, the refresh can push to it with its own token, and `main`'s
+  history stays small. An orphan branch shares no history with `main`.
+- **360 px WebP at quality 78**, measured on real cards first: full size
+  would be 690 MB, 480 px 395 MB, 360 px 231 MB. Grid tiles are ~190 px, so
+  360 px is still sharp on a 2× screen, and the card page shows the full
+  text beside the image anyway.
+- **Only missing images are fetched**, at one per second. The first fill is
+  ~4,900 downloads (~100 min); after that a week means a few dozen.
+- **Batches of 500, pushed one at a time.** As first written, the whole
+  100-minute fill would only have been committed at the end, so a timeout at
+  minute 95 would have thrown away everything. Now a run that dies keeps its
+  progress and the next one carries on.
+- **Images are optional.** A missing image falls back to the text card, so
+  the site works during the first fill, in local development without
+  images, and if a download fails.
+
+### What broke
+
+- **Images filled only half their tile.** Each image's wrapper had the class
+  `grid` ("grid-size image"), which is also the results grid's class, so
+  every wrapper became a two-column grid of its own. Renamed to `face-grid`
+  and `face-large`. Generic class names collide.
+
+### Noticed
+
+- Bandai's images are all stamped **SAMPLE**, so ours are too.
+- The OP05-119 image shows block icon ② in its corner, while Bandai's
+  card-list data says 1. That confirms last session's OP-05 fix from the
+  printed card itself.
+
+### What I'd say in an interview
+
+"The publisher's image server blocks other sites from embedding its images,
+so I self-host shrunk copies. I measured three sizes on real cards before
+picking one, stored them on a separate orphan branch so the code repo stays
+light, and made the weekly job fetch only new images in resumable batches. The
+site treats images as an enhancement: anything missing falls back to a text
+rendering of the card."

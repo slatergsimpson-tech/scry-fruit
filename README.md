@@ -80,11 +80,26 @@ the browser, so the site rotates on April 1 without a redeploy.
 A GitHub Action (`.github/workflows/refresh.yml`) re-scrapes cards, the ban
 list and block updates every Monday, and redeploys if anything changed.
 
+## Card images
+
+Bandai's image server won't let other sites show its images (it sends
+`Cross-Origin-Resource-Policy: same-site`), so Scry Fruit serves its own
+copies: 360 px WebP, about 50 KB each, ~230 MB in all. They live on the
+orphan `images` branch, not `main`, so cloning the code stays light
+(`git clone --single-branch` skips them entirely).
+
+`scripts/images.ts` downloads only images that aren't stored yet, one a
+second. The weekly refresh runs it in batches of 500 and pushes each batch;
+the deploy copies the branch into the site's `img/`. A card whose image isn't
+there yet is drawn from its text instead. Locally, `npm run images -- --max 60`
+fills `public/img/` (gitignored) with a few to develop against.
+
 ## Layout
 
 ```
 scripts/scrape.ts       official site -> public/cards.json
 scripts/legality.ts     parses the ban list and block updates; works out each card's rotation block
+scripts/images.ts       downloads missing card images as 360 px WebP
 scripts/search.ts       terminal search
 src/card.ts             the Card type: the contract between the two halves
 src/formats.ts          Standard/Extra legality and the season calendar

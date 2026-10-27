@@ -13,6 +13,7 @@
     "preview": "vite preview",
     "scrape": "node scripts/scrape.ts",
     "search": "node scripts/search.ts",
+    "images": "node scripts/images.ts",
     "test": "node --test \"src/**/*.test.ts\" \"scripts/**/*.test.ts\"",
     "typecheck": "tsc --noEmit"
   },
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
+    "sharp": "^0.34.5",
     "typescript": "^5.8.0",
     "vite": "^7.3.7"
   }

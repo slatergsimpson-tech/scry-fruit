@@ -38,6 +38,16 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+      # Card images live on their own branch (see scripts/images.ts). Copy
+      # them in under img/; any the branch lacks show as text cards.
+      - uses: actions/checkout@v4
+        with:
+          ref: images
+          path: .images
+      - run: |
+          mkdir -p dist/img
+          find .images -maxdepth 1 -name '*.webp' -exec cp -t dist/img {} +
+          echo "Copied $(ls dist/img | wc -l) card images"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

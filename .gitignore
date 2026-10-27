@@ -1,3 +1,6 @@
 node_modules/
 .cache/
 dist/
+# card images live on the "images" branch, not main (see scripts/images.ts)
+public/img/
+.images/

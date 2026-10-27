@@ -1,6 +1,7 @@
 # Re-scrapes the official site every week — cards, the ban list and Bandai's
-# block-number updates — and redeploys if anything changed. Rotation itself
-# needs no job: the site works out Standard from today's date.
+# block-number updates — fetches images for any new printings, and redeploys
+# if anything changed. Rotation itself needs no job: the site works out
+# Standard from today's date.
 name: Refresh card data
 
 on:
@@ -12,11 +13,18 @@ on:
     branches: [main]
     paths: [.github/workflows/refresh.yml]
 
+# Never run two refreshes at once: both would push to the same branches.
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    # The first run fills ~4,900 images at one a second, about 100 minutes.
+    timeout-minutes: 240
     permissions:
-      contents: write # to commit the new data
+      contents: write # to commit new data to main and new images to images
     outputs:
       changed: ${{ steps.commit.outputs.changed }}
       sha: ${{ steps.commit.outputs.sha }}
@@ -31,19 +39,45 @@ jobs:
       # changed, which fails this job instead of publishing bad data.
       - run: npm run scrape -- --fresh
       - run: npm test
+      # The images branch, checked out beside main. main's .gitignore skips it.
+      - uses: actions/checkout@v4
+        with:
+          ref: images
+          path: .images
       - id: commit
         run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          changed=false
+
+          # Fetch missing images in batches of 500 (~9 min each) and push each
+          # batch, so a run that dies partway keeps what it got and the next
+          # run carries on. If Bandai's image server fails, still publish the
+          # card data below: those cards show as text until the next run.
+          for batch in $(seq 1 15); do
+            npm run --silent images -- .images --max 500 || echo "::warning::Image download failed in batch $batch"
+            cd .images
+            git add -A
+            if git diff --cached --quiet; then
+              cd ..
+              break
+            fi
+            git commit -q -m "Add images for $(git diff --cached --name-only | grep -c webp) printings"
+            git push -q origin HEAD:images
+            changed=true
+            cd ..
+          done
+
           if git diff --quiet -- public/cards.json; then
             echo "No changes to the card data."
-            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add public/cards.json
             git commit -m "Refresh card data from the official site"
             git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+            changed=true
           fi
+
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   deploy:
