@@ -240,6 +240,14 @@ browser. Pinning the date in tests is what keeps that function honest."
   every wrapper became a two-column grid of its own. Renamed to `face-grid`
   and `face-large`. Generic class names collide.
 
+### The first fill
+
+The refresh ran itself on the push that changed it: 10 batches (9 × 500 and
+one of 410), about 95 minutes, 4,910 images. Every printing in `cards.json`
+has one. The card data hadn't changed, so the redeploy came only from new
+images. That's the first real run of the refresh → commit → deploy path,
+which until now had only ever taken the "nothing changed" branch.
+
 ### Noticed
 
 - Bandai's images are all stamped **SAMPLE**, so ours are too.
