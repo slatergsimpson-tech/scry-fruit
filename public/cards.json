@@ -6803,6 +6803,38 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB03-001_p1.png"
  },
  {
+  "id": "EB03-001_p2",
+  "code": "EB03-001",
+  "variant": "p2",
+  "name": "Nefeltari Vivi",
+  "rarity": "L",
+  "category": "leader",
+  "colors": [
+   "red",
+   "blue"
+  ],
+  "cost": null,
+  "life": 4,
+  "power": 5000,
+  "counter": null,
+  "attributes": [
+   "slash"
+  ],
+  "traits": [
+   "Alabasta"
+  ],
+  "effect": "[Once Per Turn] If your Character with a base cost of 4 or more would be K.O.'d, you may trash 1 card from your hand instead.\n[Activate: Main] You may rest this Leader: Give up to 1 of your opponent's Characters −2000 power during this turn. Then, up to 1 of your Characters without a [When Attacking] effect gains [Rush] during this turn.",
+  "trigger": null,
+  "block": "4",
+  "legalBlock": "4",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB03-001_p2.png"
+ },
+ {
   "id": "EB03-002",
   "code": "EB03-002",
   "variant": "",
@@ -12387,6 +12419,38 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-001.png"
  },
  {
+  "id": "EB05-001_p1",
+  "code": "EB05-001",
+  "variant": "p1",
+  "name": "Jewelry Bonney",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "red"
+  ],
+  "cost": 5,
+  "life": null,
+  "power": 7000,
+  "counter": 0,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Supernovas",
+   "Bonney Pirates"
+  ],
+  "effect": "[On Play] If your Leader has the {Supernovas} type, draw 2 cards and play up to 2 Character cards with 2000 power or less from your hand.\n[Activate: Main] [Once Per Turn] Give up to 1 of your opponent's Leader or Characters with 6000 power or more −1000 power until the end of your opponent's next End Phase.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-001_p1.png"
+ },
+ {
   "id": "EB05-002",
   "code": "EB05-002",
   "variant": "",
@@ -12481,6 +12545,38 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-004.png"
  },
  {
+  "id": "EB05-004_p1",
+  "code": "EB05-004",
+  "variant": "p1",
+  "name": "Baby 5",
+  "rarity": "R",
+  "category": "character",
+  "colors": [
+   "red"
+  ],
+  "cost": 4,
+  "life": null,
+  "power": 6000,
+  "counter": 0,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Punk Hazard",
+   "Donquixote Pirates"
+  ],
+  "effect": "[On Play] You may reveal 2 Event cards from your hand: Draw 2 cards.\n[On K.O.] Play up to 1 Character card with 6000 power or less from your hand rested.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-004_p1.png"
+ },
+ {
   "id": "EB05-005",
   "code": "EB05-005",
   "variant": "",
@@ -12541,6 +12637,68 @@
   "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-006.png"
+ },
+ {
+  "id": "EB05-006_p1",
+  "code": "EB05-006",
+  "variant": "p1",
+  "name": "Miss Buckingham Stussy",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "red"
+  ],
+  "cost": 2,
+  "life": null,
+  "power": 2000,
+  "counter": 2000,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Rocks Pirates"
+  ],
+  "effect": "[Activate: Main] [Once Per Turn] You may add 1 card from the top of your Life cards to your hand: Choose one:\n• Give up to 1 Character +3000 power during this turn.\n• Give up to 1 Character −4000 power during this turn.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-006_p1.png"
+ },
+ {
+  "id": "EB05-006_p2",
+  "code": "EB05-006",
+  "variant": "p2",
+  "name": "Miss Buckingham Stussy",
+  "rarity": "SP CARD",
+  "category": "character",
+  "colors": [
+   "red"
+  ],
+  "cost": 2,
+  "life": null,
+  "power": 2000,
+  "counter": 2000,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Rocks Pirates"
+  ],
+  "effect": "[Activate: Main] [Once Per Turn] You may add 1 card from the top of your Life cards to your hand: Choose one:\n• Give up to 1 Character +3000 power during this turn.\n• Give up to 1 Character −4000 power during this turn.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-006_p2.png"
  },
  {
   "id": "EB05-007",
@@ -12665,6 +12823,70 @@
   "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-010.png"
+ },
+ {
+  "id": "EB05-010_p1",
+  "code": "EB05-010",
+  "variant": "p1",
+  "name": "Nico Robin",
+  "rarity": "L",
+  "category": "leader",
+  "colors": [
+   "green",
+   "yellow"
+  ],
+  "cost": null,
+  "life": 4,
+  "power": 5000,
+  "counter": null,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Straw Hat Crew"
+  ],
+  "effect": "[Once Per Turn] When one of your Characters with the <Wisdom> attribute and without [Blocker] is K.O.'d, add up to 1 card from the top of your deck to the top of your Life cards.\n[Activate: Main] [Once Per Turn] Set up to 1 of your Characters with the <Wisdom> attribute and 6000 power or less as active.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-010_p1.png"
+ },
+ {
+  "id": "EB05-010_p2",
+  "code": "EB05-010",
+  "variant": "p2",
+  "name": "Nico Robin",
+  "rarity": "L",
+  "category": "leader",
+  "colors": [
+   "green",
+   "yellow"
+  ],
+  "cost": null,
+  "life": 4,
+  "power": 5000,
+  "counter": null,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Straw Hat Crew"
+  ],
+  "effect": "[Once Per Turn] When one of your Characters with the <Wisdom> attribute and without [Blocker] is K.O.'d, add up to 1 card from the top of your deck to the top of your Life cards.\n[Activate: Main] [Once Per Turn] Set up to 1 of your Characters with the <Wisdom> attribute and 6000 power or less as active.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-010_p2.png"
  },
  {
   "id": "EB05-011",
@@ -12795,6 +13017,70 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-014.png"
  },
  {
+  "id": "EB05-014_p1",
+  "code": "EB05-014",
+  "variant": "p1",
+  "name": "Shirahoshi",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "green"
+  ],
+  "cost": 1,
+  "life": null,
+  "power": 0,
+  "counter": 0,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Merfolk",
+   "Fish-Man Island"
+  ],
+  "effect": "[On Play] Look at 5 cards from the top of your deck; reveal up to a total of 2 [Megalo] or {Neptunian} type cards and add them to your hand. Then, trash the rest.\n[Activate: Main] You may rest this Character: Up to 1 of your {Neptunian} type Characters with 6000 power or less gains [Rush] during this turn.",
+  "trigger": null,
+  "block": "X",
+  "legalBlock": "X",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-014_p1.png"
+ },
+ {
+  "id": "EB05-014_p2",
+  "code": "EB05-014",
+  "variant": "p2",
+  "name": "Shirahoshi",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "green"
+  ],
+  "cost": 1,
+  "life": null,
+  "power": 0,
+  "counter": 0,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Merfolk",
+   "Fish-Man Island"
+  ],
+  "effect": "[On Play] Look at 5 cards from the top of your deck; reveal up to a total of 2 [Megalo] or {Neptunian} type cards and add them to your hand. Then, trash the rest.\n[Activate: Main] You may rest this Character: Up to 1 of your {Neptunian} type Characters with 6000 power or less gains [Rush] during this turn.",
+  "trigger": null,
+  "block": "X",
+  "legalBlock": "X",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-014_p2.png"
+ },
+ {
   "id": "EB05-015",
   "code": "EB05-015",
   "variant": "",
@@ -12858,6 +13144,68 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-016.png"
  },
  {
+  "id": "EB05-016_p1",
+  "code": "EB05-016",
+  "variant": "p1",
+  "name": "Nico Robin",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "green"
+  ],
+  "cost": 6,
+  "life": null,
+  "power": 6000,
+  "counter": 1000,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Straw Hat Crew"
+  ],
+  "effect": "[Your Turn] [On Play] Play up to 1 Character card with a cost of 5 or less and the <Wisdom> attribute from your hand.",
+  "trigger": "Rest up to 1 of your opponent's Characters with a cost of 6 or less.",
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-016_p1.png"
+ },
+ {
+  "id": "EB05-016_p2",
+  "code": "EB05-016",
+  "variant": "p2",
+  "name": "Nico Robin",
+  "rarity": "SP CARD",
+  "category": "character",
+  "colors": [
+   "green"
+  ],
+  "cost": 6,
+  "life": null,
+  "power": 6000,
+  "counter": 1000,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Straw Hat Crew"
+  ],
+  "effect": "[Your Turn] [On Play] Play up to 1 Character card with a cost of 5 or less and the <Wisdom> attribute from your hand.",
+  "trigger": "Rest up to 1 of your opponent's Characters with a cost of 6 or less.",
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-016_p2.png"
+ },
+ {
   "id": "EB05-017",
   "code": "EB05-017",
   "variant": "",
@@ -12919,6 +13267,37 @@
   "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-018.png"
+ },
+ {
+  "id": "EB05-018_p1",
+  "code": "EB05-018",
+  "variant": "p1",
+  "name": "Rebecca",
+  "rarity": "R",
+  "category": "character",
+  "colors": [
+   "green"
+  ],
+  "cost": 1,
+  "life": null,
+  "power": 1000,
+  "counter": 2000,
+  "attributes": [
+   "slash"
+  ],
+  "traits": [
+   "Dressrosa"
+  ],
+  "effect": "[On Play] Up to 1 of your opponent's rested Characters with a cost of 6 or less will not become active in your opponent's next Refresh Phase.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-018_p1.png"
  },
  {
   "id": "EB05-019",
@@ -13009,6 +13388,37 @@
   "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-021.png"
+ },
+ {
+  "id": "EB05-021_p1",
+  "code": "EB05-021",
+  "variant": "p1",
+  "name": "Alvida",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "blue"
+  ],
+  "cost": 9,
+  "life": null,
+  "power": 7000,
+  "counter": 1000,
+  "attributes": [
+   "strike"
+  ],
+  "traits": [
+   "Cross Guild"
+  ],
+  "effect": "[On Play] Draw 2 cards and play up to 1 {Cross Guild} type Character card with a cost of 8 or less from your hand. Then, you cannot play Character cards during this turn.\n[When Attacking] Negate the effect of up to 1 of your opponent's Characters during this turn.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-021_p1.png"
  },
  {
   "id": "EB05-022",
@@ -13232,6 +13642,39 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-028.png"
  },
  {
+  "id": "EB05-028_p1",
+  "code": "EB05-028",
+  "variant": "p1",
+  "name": "Boa Hancock",
+  "rarity": "R",
+  "category": "character",
+  "colors": [
+   "blue"
+  ],
+  "cost": 4,
+  "life": null,
+  "power": 5000,
+  "counter": 1000,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Impel Down",
+   "The Seven Warlords of the Sea",
+   "Kuja Pirates"
+  ],
+  "effect": "[On Play] If your opponent has 9 or more cards in their hand, they trash 4 cards from their hand.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-028_p1.png"
+ },
+ {
   "id": "EB05-029",
   "code": "EB05-029",
   "variant": "",
@@ -13321,6 +13764,38 @@
   "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-031.png"
+ },
+ {
+  "id": "EB05-031_p1",
+  "code": "EB05-031",
+  "variant": "p1",
+  "name": "Vinsmoke Reiju",
+  "rarity": "SP CARD",
+  "category": "character",
+  "colors": [
+   "purple"
+  ],
+  "cost": 4,
+  "life": null,
+  "power": 5000,
+  "counter": 1000,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "The Vinsmoke Family",
+   "GERMA 66"
+  ],
+  "effect": "[On Play] DON!! −1: If your Leader has the {The Vinsmoke Family} type, trash 10 cards from the top of your deck.\n[Activate: Main] You may trash this Character: If your opponent has a Character with 8000 base power or more, add up to 4 DON!! cards as active from your DON!! deck.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-031_p1.png"
  },
  {
   "id": "EB05-032",
@@ -13416,6 +13891,37 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-034.png"
  },
  {
+  "id": "EB05-034_p1",
+  "code": "EB05-034",
+  "variant": "p1",
+  "name": "Sugar",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "purple"
+  ],
+  "cost": 2,
+  "life": null,
+  "power": 0,
+  "counter": 2000,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Donquixote Pirates"
+  ],
+  "effect": "[On Play] DON!! −2: If you have 7 or more DON!! cards on your field, give up to 1 of your opponent's Characters −4000 power during this turn.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-034_p1.png"
+ },
+ {
   "id": "EB05-035",
   "code": "EB05-035",
   "variant": "",
@@ -13508,6 +14014,37 @@
   "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-037.png"
+ },
+ {
+  "id": "EB05-037_p1",
+  "code": "EB05-037",
+  "variant": "p1",
+  "name": "Black Maria",
+  "rarity": "R",
+  "category": "character",
+  "colors": [
+   "purple"
+  ],
+  "cost": 1,
+  "life": null,
+  "power": 2000,
+  "counter": 2000,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Animal Kingdom Pirates"
+  ],
+  "effect": "[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {Animal Kingdom Pirates} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-037_p1.png"
  },
  {
   "id": "EB05-038",
@@ -13694,6 +14231,37 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-043.png"
  },
  {
+  "id": "EB05-043_p1",
+  "code": "EB05-043",
+  "variant": "p1",
+  "name": "Perona",
+  "rarity": "R",
+  "category": "character",
+  "colors": [
+   "black"
+  ],
+  "cost": 4,
+  "life": null,
+  "power": 5000,
+  "counter": 2000,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Thriller Bark Pirates"
+  ],
+  "effect": "[On K.O.] K.O. or rest up to 1 of your opponent's Characters with a cost of 6 or less.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-043_p1.png"
+ },
+ {
   "id": "EB05-044",
   "code": "EB05-044",
   "variant": "",
@@ -13785,6 +14353,37 @@
   "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-046.png"
+ },
+ {
+  "id": "EB05-046_p1",
+  "code": "EB05-046",
+  "variant": "p1",
+  "name": "Yamato",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "black"
+  ],
+  "cost": 4,
+  "life": null,
+  "power": 5000,
+  "counter": 1000,
+  "attributes": [
+   "strike"
+  ],
+  "traits": [
+   "Land of Wano"
+  ],
+  "effect": "If your opponent has a Character with 8000 base power or more, this Character gains [Blocker] and +3000 power.\n[On Your Opponent's Attack] You may trash 1 card from your hand: If you have 10 or more cards in your trash, your Leader's base power becomes 7000 during this turn.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-046_p1.png"
  },
  {
   "id": "EB05-047",
@@ -13972,6 +14571,38 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-052.png"
  },
  {
+  "id": "EB05-052_p1",
+  "code": "EB05-052",
+  "variant": "p1",
+  "name": "Gloriosa",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "yellow"
+  ],
+  "cost": 4,
+  "life": null,
+  "power": 6000,
+  "counter": 0,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Amazon Lily",
+   "Rocks Pirates"
+  ],
+  "effect": "If you would take damage, you may trash this Character instead.",
+  "trigger": "Draw 2 cards and trash 1 card from your hand.",
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-052_p1.png"
+ },
+ {
   "id": "EB05-053",
   "code": "EB05-053",
   "variant": "",
@@ -14068,6 +14699,102 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-055.png"
  },
  {
+  "id": "EB05-055_p1",
+  "code": "EB05-055",
+  "variant": "p1",
+  "name": "Nami",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "yellow"
+  ],
+  "cost": 5,
+  "life": null,
+  "power": 6000,
+  "counter": 0,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "East Blue",
+   "Straw Hat Crew"
+  ],
+  "effect": "[Your Turn] [On Play] If your Leader has the <Wisdom> attribute, add up to 1 card from the top of your deck to the top of your Life cards.",
+  "trigger": "You may trash 1 card from your hand: If you have 2 or less Life cards, play this card.",
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-055_p1.png"
+ },
+ {
+  "id": "EB05-055_p2",
+  "code": "EB05-055",
+  "variant": "p2",
+  "name": "Nami",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "yellow"
+  ],
+  "cost": 5,
+  "life": null,
+  "power": 6000,
+  "counter": 0,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "East Blue",
+   "Straw Hat Crew"
+  ],
+  "effect": "[Your Turn] [On Play] If your Leader has the <Wisdom> attribute, add up to 1 card from the top of your deck to the top of your Life cards.",
+  "trigger": "You may trash 1 card from your hand: If you have 2 or less Life cards, play this card.",
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-055_p2.png"
+ },
+ {
+  "id": "EB05-055_p3",
+  "code": "EB05-055",
+  "variant": "p3",
+  "name": "Nami",
+  "rarity": "SR",
+  "category": "character",
+  "colors": [
+   "yellow"
+  ],
+  "cost": 5,
+  "life": null,
+  "power": 6000,
+  "counter": 0,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "East Blue",
+   "Straw Hat Crew"
+  ],
+  "effect": "[Your Turn] [On Play] If your Leader has the <Wisdom> attribute, add up to 1 card from the top of your deck to the top of your Life cards.",
+  "trigger": "You may trash 1 card from your hand: If you have 2 or less Life cards, play this card.",
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-055_p3.png"
+ },
+ {
   "id": "EB05-056",
   "code": "EB05-056",
   "variant": "",
@@ -14128,6 +14855,37 @@
   "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-057.png"
+ },
+ {
+  "id": "EB05-057_p1",
+  "code": "EB05-057",
+  "variant": "p1",
+  "name": "Nojiko",
+  "rarity": "R",
+  "category": "character",
+  "colors": [
+   "yellow"
+  ],
+  "cost": 2,
+  "life": null,
+  "power": 0,
+  "counter": 2000,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "East Blue"
+  ],
+  "effect": "[Activate: Main] [Once Per Turn] Give up to 1 rested DON!! card to 1 of your Leader or Character cards with the <Special> or <Wisdom> attribute.",
+  "trigger": "If you have 2 or less Life cards, play up to 1 Character card with 6000 power or less and a [Trigger] from your hand.",
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-057_p1.png"
  },
  {
   "id": "EB05-058",
@@ -14250,6 +15008,37 @@
   "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-061.png"
+ },
+ {
+  "id": "EB05-061_p1",
+  "code": "EB05-061",
+  "variant": "p1",
+  "name": "Nami",
+  "rarity": "SEC",
+  "category": "character",
+  "colors": [
+   "red"
+  ],
+  "cost": 3,
+  "life": null,
+  "power": 4000,
+  "counter": 2000,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Straw Hat Crew"
+  ],
+  "effect": "[Once Per Turn] If one of your Characters with 6000 base power or less would be removed from the field by your opponent, you may add 1 card from the top of your Life cards to your hand instead.\n[On Play] Play up to 1 red Character card with a cost of 2 or less from your hand.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/EB05-061_p1.png"
  },
  {
   "id": "OP01-001",
@@ -15385,6 +16174,37 @@
   "setName": "BOOSTER PACK -ROMANCE DAWN- [OP-01]",
   "notes": "Errata Card\nErrata Card",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-016_p1.png"
+ },
+ {
+  "id": "OP01-016_p10",
+  "code": "OP01-016",
+  "variant": "p10",
+  "name": "Nami",
+  "rarity": "SP CARD",
+  "category": "character",
+  "colors": [
+   "red"
+  ],
+  "cost": 1,
+  "life": null,
+  "power": 2000,
+  "counter": 1000,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Straw Hat Crew"
+  ],
+  "effect": "[On Play] Look at 5 cards from the top of your deck; reveal up to 1 {Straw Hat Crew} type card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+  "trigger": null,
+  "block": "X",
+  "legalBlock": "X",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-016_p10.png"
  },
  {
   "id": "OP01-016_p2",
@@ -87490,6 +88310,39 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-022_p1.png"
  },
  {
+  "id": "OP11-022_p2",
+  "code": "OP11-022",
+  "variant": "p2",
+  "name": "Shirahoshi",
+  "rarity": "L",
+  "category": "leader",
+  "colors": [
+   "green",
+   "yellow"
+  ],
+  "cost": null,
+  "life": 5,
+  "power": 5000,
+  "counter": null,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Merfolk",
+   "Fish-Man Island"
+  ],
+  "effect": "This Leader cannot attack.\n[Activate: Main] [Once Per Turn] You may rest 1 of your DON!! cards and turn 1 card from the top of your Life cards face-up: Play up to 1 {Neptunian} type Character card or [Megalo] with a cost equal to or less than the number of DON!! cards on your field from your hand.",
+  "trigger": null,
+  "block": "3",
+  "legalBlock": "3",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-022_p2.png"
+ },
+ {
   "id": "OP11-023",
   "code": "OP11-023",
   "variant": "",
@@ -88293,6 +89146,38 @@
   "setName": "Other Product Card",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-041_p3.png"
+ },
+ {
+  "id": "OP11-041_p4",
+  "code": "OP11-041",
+  "variant": "p4",
+  "name": "Nami",
+  "rarity": "L",
+  "category": "leader",
+  "colors": [
+   "blue",
+   "yellow"
+  ],
+  "cost": null,
+  "life": 4,
+  "power": 5000,
+  "counter": null,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Straw Hat Crew"
+  ],
+  "effect": "[Your Turn] [Once Per Turn] This effect can be activated when a card is removed from your or your opponent's Life cards. If you have 7 or less cards in your hand, draw 1 card.\n[DON!! x1] [On Your Opponent's Attack] [Once Per Turn] You may trash 1 card from your hand: This Leader gains +2000 power during this turn.",
+  "trigger": null,
+  "block": "3",
+  "legalBlock": "3",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP11-041_p4.png"
  },
  {
   "id": "OP11-042",
@@ -102346,6 +103231,38 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP13-100_p1.png"
  },
  {
+  "id": "OP13-100_p2",
+  "code": "OP13-100",
+  "variant": "p2",
+  "name": "Jewelry Bonney",
+  "rarity": "L",
+  "category": "leader",
+  "colors": [
+   "yellow"
+  ],
+  "cost": null,
+  "life": 5,
+  "power": 5000,
+  "counter": null,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Egghead",
+   "Bonney Pirates"
+  ],
+  "effect": "[Your Turn] [Once Per Turn] This effect can be activated when you play a Character with a [Trigger]. Give up to 2 rested DON!! cards to 1 of your Leader or Character cards.",
+  "trigger": null,
+  "block": "4",
+  "legalBlock": "4",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP13-100_p2.png"
+ },
+ {
   "id": "OP13-101",
   "code": "OP13-101",
   "variant": "",
@@ -105087,6 +106004,38 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-033_p2.png"
  },
  {
+  "id": "OP14-033_p3",
+  "code": "OP14-033",
+  "variant": "p3",
+  "name": "Perona",
+  "rarity": "SP CARD",
+  "category": "character",
+  "colors": [
+   "green"
+  ],
+  "cost": 5,
+  "life": null,
+  "power": 6000,
+  "counter": 1000,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "Muggy Kingdom",
+   "Thriller Bark Pirates"
+  ],
+  "effect": "[On Play] Up to 2 of your opponent's Characters with a cost of 5 or less cannot be rested until the end of your opponent's next End Phase.\n[On K.O.] You may rest 1 of your cards: Play up to 1 green Character card with a cost of 5 or less from your hand.",
+  "trigger": null,
+  "block": "4",
+  "legalBlock": "4",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-033_p3.png"
+ },
+ {
   "id": "OP14-034",
   "code": "OP14-034",
   "variant": "",
@@ -105430,6 +106379,39 @@
   "setName": "BOOSTER PACK -THE AZURE SEA’S SEVEN- [OP14-EB04]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-041_p1.png"
+ },
+ {
+  "id": "OP14-041_p3",
+  "code": "OP14-041",
+  "variant": "p3",
+  "name": "Boa Hancock",
+  "rarity": "L",
+  "category": "leader",
+  "colors": [
+   "blue",
+   "yellow"
+  ],
+  "cost": null,
+  "life": 4,
+  "power": 5000,
+  "counter": null,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "The Seven Warlords of the Sea",
+   "Kuja Pirates"
+  ],
+  "effect": "[Opponent's Turn] When you play a Character, draw 1 card.\n[DON!! x1] [Once Per Turn] When one of your {Amazon Lily} or {Kuja Pirates} type Characters with 5000 base power or more is K.O.'d, add up to 1 card from the top of your opponent's Life cards to the owner's hand.",
+  "trigger": null,
+  "block": "4",
+  "legalBlock": "4",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP14-041_p3.png"
  },
  {
   "id": "OP14-042",
@@ -110331,6 +111313,37 @@
   "setName": "BOOSTER PACK -ADVENTURE ON KAMI’S ISLAND- [OP15-EB04]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-039_p1.png"
+ },
+ {
+  "id": "OP15-039_p2",
+  "code": "OP15-039",
+  "variant": "p2",
+  "name": "Rebecca",
+  "rarity": "L",
+  "category": "leader",
+  "colors": [
+   "blue"
+  ],
+  "cost": null,
+  "life": 5,
+  "power": 5000,
+  "counter": null,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Dressrosa"
+  ],
+  "effect": "This Leader cannot attack.\n[Activate: Main] You may rest this Leader and return 1 of your {Dressrosa} type Characters to the owner's hand: Play up to 1 {Dressrosa} type Character card with a cost of 3 from your hand.",
+  "trigger": null,
+  "block": "4",
+  "legalBlock": "4",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP15-039_p2.png"
  },
  {
   "id": "OP15-040",
@@ -121642,6 +122655,39 @@
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-081.png"
  },
  {
+  "id": "OP17-081_p1",
+  "code": "OP17-081",
+  "variant": "p1",
+  "name": "Gerd",
+  "rarity": "SP CARD",
+  "category": "character",
+  "colors": [
+   "black"
+  ],
+  "cost": 2,
+  "life": null,
+  "power": 3000,
+  "counter": 2000,
+  "attributes": [
+   "slash"
+  ],
+  "traits": [
+   "Giant",
+   "Elbaph",
+   "New Giant Pirates"
+  ],
+  "effect": "If your Leader has the {Elbaph} type, this Character gains +12 cost.\n[On Play] You may trash 1 card from your hand: Add up to 1 Character card with a cost of 8 or less other than [Gerd] from your trash to your hand.",
+  "trigger": null,
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-081_p1.png"
+ },
+ {
   "id": "OP17-082",
   "code": "OP17-082",
   "variant": "",
@@ -122694,6 +123740,37 @@
   "setName": "BOOSTER PACK -THE WORLD’S STRONGEST WARRIORS- [OP-17]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-109.png"
+ },
+ {
+  "id": "OP17-109_p1",
+  "code": "OP17-109",
+  "variant": "p1",
+  "name": "Charlotte Pudding",
+  "rarity": "SP CARD",
+  "category": "character",
+  "colors": [
+   "yellow"
+  ],
+  "cost": 3,
+  "life": null,
+  "power": 4000,
+  "counter": 1000,
+  "attributes": [
+   "wisdom"
+  ],
+  "traits": [
+   "Big Mom Pirates"
+  ],
+  "effect": "[On Play] You may trash 1 card with a [Trigger] from your hand: Draw 3 cards.",
+  "trigger": "Look at 5 cards from the top of your deck; reveal up to 1 {Big Mom Pirates} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+  "block": "5",
+  "legalBlock": "5",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/OP17-109_p1.png"
  },
  {
   "id": "OP17-110",
@@ -146193,6 +147270,38 @@
   "setName": "STARTER DECK -Blue Donquixote Doflamingo- [ST-17]",
   "notes": "",
   "image": "https://en.onepiece-cardgame.com/images/cardlist/card/ST17-004.png"
+ },
+ {
+  "id": "ST17-004_p1",
+  "code": "ST17-004",
+  "variant": "p1",
+  "name": "Boa Hancock",
+  "rarity": "SP CARD",
+  "category": "character",
+  "colors": [
+   "blue"
+  ],
+  "cost": 4,
+  "life": null,
+  "power": 6000,
+  "counter": 0,
+  "attributes": [
+   "special"
+  ],
+  "traits": [
+   "The Seven Warlords of the Sea",
+   "Kuja Pirates"
+  ],
+  "effect": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)\n[On Play] Look at 3 cards from the top of your deck and place them at the top or bottom of your deck in any order. Then, give up to 1 rested DON!! card to 1 of your {The Seven Warlords of the Sea} type Leader or Character cards.",
+  "trigger": null,
+  "block": "3",
+  "legalBlock": "3",
+  "ban": null,
+  "bannedWith": [],
+  "set": "EB05",
+  "setName": "EXTRA BOOSTER -ONE PIECE HEROINES EDITION vol.2- [EB-05]",
+  "notes": "",
+  "image": "https://en.onepiece-cardgame.com/images/cardlist/card/ST17-004_p1.png"
  },
  {
   "id": "ST17-005",
